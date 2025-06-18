@@ -1,0 +1,256 @@
+/* Общие стили */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+.logo span {
+  color: #ff6b6b;
+}
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+nav a.active {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://png.pngtree.com/thumb_back/fw800/background/20241210/pngtree-modern-gym-with-dramatic-red-lights-creating-an-intense-atmosphere-for-image_16730154.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 60px;
+}
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.btn {
+  display: inline-block;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background-color: #ff5252;
+  transform: translateY(-3px);
+}
+.slider-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+.slider {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.slide.active {
+  opacity: 1;
+}
+.slide-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+}
+.slide-content h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+.slide-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.btn-slide {
+  background-color: transparent;
+  border: 2px solid white;
+  margin-top: 10px;
+}
+.btn-slide:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.features {
+  display: flex;
+  justify-content: space-between;
+  margin: 60px 0;
+  flex-wrap: wrap;
+}
+.feature-card {
+  flex: 1;
+  min-width: 300px;
+  margin: 15px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.feature-card h3 {
+  color: #ff6b6b;
+  margin-bottom: 15px;
+}
+/* Страница услуг */
+.services-header {
+  text-align: center;
+  margin: 80px 0;
+}
+.services-header h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  position: relative;
+}
+.search-container input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  font-size: 16px;
+}
+.search-container button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+}
+.service-item {
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.service-details {
+  padding: 30px;
+}
+.service-details h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+.service-details p {
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+.price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 50px 0;
+}
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.page-btn.active {
+  background: var(--primary);
+  color: var(--white);
+}
+/* Подвал */
+footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 50px 0;
+  text-align: center;
+}
+footer p {
+  color: red
+}
