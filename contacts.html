@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тело в ритме | Контакты</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">Тело в <span>ритме</span></div>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html" class="active">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container contacts-page">
+    <h1>Наши контакты</h1>
+
+    <div class="contact-grid">
+      <section class="contact-form">
+        <h2>Форма обратной связи</h2>
+        <form>
+          <div class="form-group">
+            <label for="name">Ваше имя</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Электронная почта</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Отправить</button>
+        </form>
+      </section>
+
+      <section class="contact-info">
+        <h2>Как нас найти</h2>
+        <div class="static-map">
+  <h2>Мы находимся</h2>
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=55.7558,37.6176&zoom=15&size=800x400&maptype=roadmap&markers=color:red%7C55.7558,37.6176&key=YOUR_API_KEY" 
+       alt="Наш фитнес-клуб на карте">
+  <p class="map-address">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+    г. Москва, ул. Тверская, д. 10
+  </p>
+</div>
+
+        <div class="contact-details">
+          <h3>Адрес</h3>
+          <p>г. Москва, ул. Тверская, д. 10</p>
+          
+          <h3>Телефон</h3>
+          <p>+7 (495) 123-45-67</p>
+          
+          <h3>Email</h3>
+          <p>info@telovritme.ru</p>
+          
+          <h3>Часы работы</h3>
+          <p>Пн-Пт: 7:00 - 23:00<br>Сб-Вс: 9:00 - 21:00</p>
+        </div>
+
+        <div class="social-links">
+          <h3>Мы в соцсетях</h3>
+          <div class="social-icons">
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" alt="VK" width="40">
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="40">
+            </a>
+            <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" width="40">
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="40">
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2023 Тело в ритме.</p>
+    </div>
+  </footer>
+</body>
+</html>

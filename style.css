@@ -157,20 +157,34 @@ nav a.active {
   color: #ff6b6b;
   margin-bottom: 15px;
 }
-/* Страница услуг */
+/* Основное содержимое */
+main {
+  margin-top: 80px;
+}
+
+/* Заголовок страницы */
 .services-header {
   text-align: center;
   margin: 80px 0;
 }
+
 .services-header h1 {
   font-size: 48px;
   margin-bottom: 20px;
 }
+
+.services-header p {
+  font-size: 18px;
+  color: var(--text-light);
+}
+
+/* Поиск */
 .search-container {
   max-width: 600px;
   margin: 0 auto 50px;
   position: relative;
 }
+
 .search-container input {
   width: 100%;
   padding: 15px 20px;
@@ -179,6 +193,7 @@ nav a.active {
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   font-size: 16px;
 }
+
 .search-container button {
   position: absolute;
   right: 5px;
@@ -190,46 +205,113 @@ nav a.active {
   padding: 10px 25px;
   cursor: pointer;
 }
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ff5252;
+  transform: translateY(-3px);
+}
+
+/* Сортировка */
+.sort-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sort-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f0f0f0;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.sort-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.sort-btn.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Карточки услуг */
 .service-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin: 50px 0;
 }
+
 .service-item {
   background: var(--white);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
+  width: 400px; 
+  margin: 0 auto; 
 }
+
 .service-item:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
+
 .service-details {
   padding: 30px;
+  height: 100%;
+  box-sizing: border-box;
 }
+
 .service-details h3 {
   font-size: 22px;
   margin-bottom: 10px;
   color: var(--black);
 }
+
 .service-details p {
   color: var(--text-light);
   margin-bottom: 20px;
 }
+
 .price {
   font-size: 24px;
   font-weight: 700;
   color: var(--primary);
 }
+
+.service-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+/* Пагинация */
 .pagination {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin: 50px 0;
 }
+
 .page-btn {
   width: 40px;
   height: 40px;
@@ -240,6 +322,7 @@ nav a.active {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .page-btn.active {
   background: var(--primary);
   color: var(--white);
@@ -253,4 +336,265 @@ footer {
 }
 footer p {
   color: red
+}
+/* Стили для страницы детального просмотра услуги */
+.service-detail {
+  padding: 60px 0;
+}
+
+.service-gallery {
+  margin-bottom: 40px;
+}
+
+.main-image {
+  margin-bottom: 20px;
+}
+
+.main-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.thumbnail:hover, .thumbnail.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-info {
+  margin-bottom: 60px;
+}
+
+.service-info h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ff6b6b;
+  margin-bottom: 30px;
+}
+
+.description, .features, .trainer {
+  margin-bottom: 40px;
+}
+
+.description h2, .features h2, .trainer h2, .reviews h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.features ul {
+  padding-left: 20px;
+}
+
+.features li {
+  margin-bottom: 10px;
+}
+
+.trainer-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.trainer-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.trainer-info h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.certificates {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.reviews {
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.review-list {
+  margin-bottom: 30px;
+}
+
+.review {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.review-author {
+  font-weight: 600;
+}
+
+.review-date {
+  color: #666;
+  font-size: 14px;
+}
+
+.review-rating {
+  color: #ffc107;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+.btn-outline:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+/* Стили для страницы контактов */
+.contacts-page {
+  padding: 60px 0;
+}
+
+.contacts-page h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 36px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-form h2, .contact-info h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.map img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.contact-details h3 {
+  margin: 20px 0 10px;
+  color: #333;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Стили для статической карты */
+.static-map {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.static-map h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.static-map img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+.map-address {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
