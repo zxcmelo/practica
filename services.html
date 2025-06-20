@@ -12,9 +12,10 @@
     <div class="container header-content">
       <div class="logo">Тело в <span>ритме</span></div>
       <nav>
-        <a href="index.html">Главная</a>
-        <a href="services.html" class="active">Услуги</a>
-      </nav>
+  <a href="index.html">Главная</a>
+  <a href="services.html">Услуги</a>
+  <a href="contacts.html">Контакты</a>
+</nav>
     </div>
   </header>
 
@@ -29,43 +30,58 @@
       <button class="btn">Найти</button>
     </div>
 
+    <div class="sort-options">
+      <button class="sort-btn active" data-sort="default">По умолчанию</button>
+      <button class="sort-btn" data-sort="price-asc">Цена (по возрастанию)</button>
+      <button class="sort-btn" data-sort="price-desc">Цена (по убыванию)</button>
+      <button class="sort-btn" data-sort="name-asc">Название (А-Я)</button>
+      <button class="sort-btn" data-sort="name-desc">Название (Я-А)</button>
+    </div>
+
     <div class="service-list">
-      <div class="service-item">
-        <div class="service-details">
-          <h3>Персональный тренинг</h3>
-          <p>Индивидуальные занятия с тренером по персональной программе</p>
-          <div class="price">5 500 ₽/мес</div>
-        </div>
+      <div class="service-item" data-price="5500" data-name="Персональный тренинг" data-category="personal">
+        <a href="personal-training.html" class="service-link">
+          <div class="service-details">
+            <h3>Персональный тренинг</h3>
+            <p>Индивидуальные занятия с тренером по персональной программе</p>
+            <div class="price">5 500 ₽/мес</div>
+          </div>
+        </a>
       </div>
-      <div class="service-item">
+      
+      <div class="service-item" data-price="3800" data-name="Функциональный тренинг" data-category="group">
         <div class="service-details">
           <h3>Функциональный тренинг</h3>
           <p>Современные методики для развития всех физических качеств</p>
           <div class="price">3 800 ₽/мес</div>
         </div>
       </div>
-      <div class="service-item">
+      
+      <div class="service-item" data-price="4200" data-name="Кроссфит" data-category="group">
         <div class="service-details">
           <h3>Кроссфит</h3>
           <p>Высокоинтенсивные тренировки для подготовки к любым нагрузкам</p>
           <div class="price">4 200 ₽/мес</div>
         </div>
       </div>
-      <div class="service-item">
+      
+      <div class="service-item" data-price="3500" data-name="Йога" data-category="group">
         <div class="service-details">
           <h3>Йога</h3>
           <p>Классические и современные направления йоги для тела и духа</p>
           <div class="price">3 500 ₽/мес</div>
         </div>
       </div>
-      <div class="service-item">
+      
+      <div class="service-item" data-price="3200" data-name="Пилатес" data-category="group">
         <div class="service-details">
           <h3>Пилатес</h3>
           <p>Укрепление мышечного корсета и развитие гибкости</p>
           <div class="price">3 200 ₽/мес</div>
         </div>
       </div>
-      <div class="service-item">
+      
+      <div class="service-item" data-price="4500" data-name="Тренажерный зал" data-category="gym">
         <div class="service-details">
           <h3>Тренажерный зал</h3>
           <p>Доступ ко всем тренажерам и оборудованию клуба</p>
