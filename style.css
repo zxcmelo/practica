@@ -598,3 +598,288 @@ footer p {
   justify-content: center;
   gap: 8px;
 }
+/* Стили для слайдера */
+.slider-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.slider {
+  position: relative;
+  height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  transform: scale(0.95);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.slide-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 60px;
+  color: white;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.6s ease 0.3s;
+}
+
+.slide.active .slide-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-content h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.slide-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.btn-slide {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-slide:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* Навигационные кнопки */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.slider-nav:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-nav svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.prev-btn {
+  left: 30px;
+}
+
+.next-btn {
+  right: 30px;
+}
+
+/* Навигационные точки */
+.slider-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.slider-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dots .dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .slider {
+    height: 500px;
+  }
+  
+  .slide-content {
+    padding: 30px;
+  }
+  
+  .slide-content h2 {
+    font-size: 32px;
+  }
+  
+  .slide-content p {
+    font-size: 16px;
+  }
+  
+  .slider-nav {
+    width: 50px;
+    height: 50px;
+  }
+}
+/* Стили для поиска и сортировки */
+.search-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+.search-container button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 7px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-container button:hover {
+  background: #ff5252;
+}
+
+.sort-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.sort-btn {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.sort-btn:hover {
+  background: #e0e0e0;
+}
+
+.sort-btn.active {
+  background: #ff6b6b;
+  color: white;
+}
+
+/* Стили для пагинации */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-btn:hover {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.page-btn.active {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sort-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sort-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .service-item {
+    width: 100%;
+  }
+}
