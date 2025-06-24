@@ -206,3 +206,262 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', checkFadeIn);
   window.addEventListener('load', checkFadeIn);
 });
+// Функционал галереи изображений
+const initGallery = () => {
+  const mainImage = document.querySelector('.main-image img');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+
+  if (!mainImage || !thumbnails.length) return;
+
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      // Удаляем активный класс у всех миниатюр
+      thumbnails.forEach(t => t.classList.remove('active'));
+      
+      // Добавляем активный класс текущей миниатюре
+      thumb.classList.add('active');
+      
+      // Обновляем главное изображение
+      mainImage.src = thumb.querySelector('img').src;
+    });
+  });
+};
+
+// Функционал добавления отзывов
+const initReviews = () => {
+  const reviewForm = document.createElement('div');
+  reviewForm.className = 'review-form';
+  reviewForm.innerHTML = `
+    <h3>Добавить отзыв</h3>
+    <form id="add-review-form">
+      <div class="form-group">
+        <label for="review-name">Ваше имя:</label>
+        <input type="text" id="review-name" required>
+      </div>
+      <div class="form-group">
+        <label for="review-rating">Оценка:</label>
+        <select id="review-rating" required>
+          <option value="5">★★★★★</option>
+          <option value="4">★★★★☆</option>
+          <option value="3">★★★☆☆</option>
+          <option value="2">★★☆☆☆</option>
+          <option value="1">★☆☆☆☆</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="review-text">Текст отзыва:</label>
+        <textarea id="review-text" required></textarea>
+      </div>
+      <button type="submit" class="btn">Отправить</button>
+    </form>
+  `;
+
+  const reviewsSection = document.querySelector('.reviews');
+  const btnOutline = document.querySelector('.btn-outline');
+
+  if (!reviewsSection || !btnOutline) return;
+
+  btnOutline.addEventListener('click', () => {
+    if (!document.querySelector('.review-form')) {
+      reviewsSection.insertBefore(reviewForm, btnOutline);
+    }
+  });
+
+  // Обработка отправки формы
+  document.addEventListener('submit', (e) => {
+    if (e.target.id === 'add-review-form') {
+      e.preventDefault();
+      
+      const name = document.getElementById('review-name').value;
+      const rating = document.getElementById('review-rating').value;
+      const text = document.getElementById('review-text').value;
+      
+      if (!name || !text) return;
+
+      const stars = '★★★★★☆☆☆☆☆'.slice(5 - rating, 10 - rating);
+      
+      // Создаем новый отзыв
+      const newReview = document.createElement('div');
+      newReview.className = 'review';
+      newReview.innerHTML = `
+        <div class="review-header">
+          <div class="review-author">${name}</div>
+          <div class="review-date">${new Date().toLocaleDateString()}</div>
+          <div class="review-rating">${stars}</div>
+        </div>
+        <div class="review-text">
+          <p>${text}</p>
+        </div>
+      `;
+
+      // Добавляем в начало списка
+      const reviewList = document.querySelector('.review-list');
+      reviewList.prepend(newReview);
+
+      // Сохраняем в localStorage
+      saveReviewToLocalStorage({ name, rating, text, date: new Date().toLocaleDateString() });
+
+      // Очищаем форму
+      e.target.reset();
+      reviewForm.remove();
+    }
+  });
+
+  // Загрузка отзывов из localStorage при загрузке страницы
+  loadReviewsFromLocalStorage();
+};
+
+// Сохранение отзыва в localStorage
+function saveReviewToLocalStorage(review) {
+  const reviews = JSON.parse(localStorage.getItem('service-reviews') || '[]');
+  reviews.push(review);
+  localStorage.setItem('service-reviews', JSON.stringify(reviews));
+}
+
+// Загрузка отзывов из localStorage
+function loadReviewsFromLocalStorage() {
+  const reviews = JSON.parse(localStorage.getItem('service-reviews') || '[]');
+  const reviewList = document.querySelector('.review-list');
+
+  if (!reviewList) return;
+
+  reviews.forEach(review => {
+    const stars = '★★★★★☆☆☆☆☆'.slice(5 - review.rating, 10 - review.rating);
+    
+    const reviewElement = document.createElement('div');
+    reviewElement.className = 'review';
+    reviewElement.innerHTML = `
+      <div class="review-header">
+        <div class="review-author">${review.name}</div>
+        <div class="review-date">${review.date}</div>
+        <div class="review-rating">${stars}</div>
+      </div>
+      <div class="review-text">
+        <p>${review.text}</p>
+      </div>
+    `;
+    
+    reviewList.appendChild(reviewElement);
+  });
+}
+
+// Обновляем обработчик DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector('.slider')) {
+    slider();
+  }
+
+  if (document.querySelector('.service-list')) {
+    initServices();
+  }
+
+  // Инициализация галереи
+  initGallery();
+
+  // Инициализация отзывов
+  initReviews();
+
+  const fadeInElements = document.querySelectorAll('.fade-in');
+  
+  function checkFadeIn() {
+    fadeInElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      if (elementTop < windowHeight * 0.9) {
+        element.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkFadeIn);
+  window.addEventListener('load', checkFadeIn);
+});
+// Валидация формы обратной связи
+const initContactForm = () => {
+  const contactForm = document.querySelector('.contacts-page form');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    let isValid = true;
+
+    // Валидация имени
+    if (!nameInput.value.trim()) {
+      showError(nameInput, 'Пожалуйста, введите ваше имя');
+      isValid = false;
+    } else {
+      clearError(nameInput);
+    }
+
+    // Валидация email
+    if (!emailInput.value.trim()) {
+      showError(emailInput, 'Пожалуйста, введите email');
+      isValid = false;
+    } else if (!isValidEmail(emailInput.value)) {
+      showError(emailInput, 'Пожалуйста, введите корректный email');
+      isValid = false;
+    } else {
+      clearError(emailInput);
+    }
+
+    // Валидация сообщения
+    if (!messageInput.value.trim()) {
+      showError(messageInput, 'Пожалуйста, введите сообщение');
+      isValid = false;
+    } else {
+      clearError(messageInput);
+    }
+
+    if (isValid) {
+      // Здесь можно добавить отправку формы
+      alert('Форма успешно отправлена!');
+      contactForm.reset();
+    }
+  });
+
+  // Функция проверки email
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // Функция показа ошибки
+  function showError(input, message) {
+    const formGroup = input.closest('.form-group');
+    let errorElement = formGroup.querySelector('.error-message');
+    
+    if (!errorElement) {
+      errorElement = document.createElement('div');
+      errorElement.className = 'error-message';
+      formGroup.appendChild(errorElement);
+    }
+    
+    errorElement.textContent = message;
+    input.style.borderColor = '#ff6b6b';
+  }
+
+  // Функция очистки ошибки
+  function clearError(input) {
+    const formGroup = input.closest('.form-group');
+    const errorElement = formGroup.querySelector('.error-message');
+    
+    if (errorElement) {
+      errorElement.remove();
+    }
+    
+    input.style.borderColor = '#ddd';
+  }
+};
+
+// Обеспечиваем открытие ссылок на соцсети в новом окне
+const initSocialLinks = () => {
+  const socialLinks = document.querySelectorAll('.social-icons a');
+  socialLinks.forEach(link => {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+};
